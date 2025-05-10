@@ -14,3 +14,11 @@ if image is None:
 image = cv2.GaussianBlur(image, (5, 5), 0)
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 gray_image = cv2.equalizeHist(gray_image)
+
+
+faces = face_cascade.detectMultiScale(
+    gray_image,
+    scaleFactor=1.05,
+    minNeighbors=8,
+    minSize=(40, 40)
+)
