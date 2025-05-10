@@ -22,3 +22,15 @@ faces = face_cascade.detectMultiScale(
     minNeighbors=8,
     minSize=(40, 40)
 )
+
+
+output_folder = "faces"
+os.makedirs(output_folder, exist_ok=True)
+
+for i, (x, y, w, h) in enumerate(faces):
+    face = image[y:y+h, x:x+w]
+    face = cv2.resize(face, (150, 150))
+    face_path = os.path.join(output_folder, f"face_{i+1}.jpg")
+    cv2.imwrite(face_path, face)
+    cv2.imshow(f"Face {i+1}", face)
+
