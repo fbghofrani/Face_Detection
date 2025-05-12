@@ -34,3 +34,10 @@ for i, (x, y, w, h) in enumerate(faces):
     cv2.imwrite(face_path, face)
     cv2.imshow(f"Face {i+1}", face)
 
+
+for (x, y, w, h) in faces:
+    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+cv2.imshow("Detected Faces", image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
