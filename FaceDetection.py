@@ -4,7 +4,7 @@ import os
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-image_path = "image6.jpg"
+image_path = "image/image11.jpg"
 image = cv2.imread(image_path)
 
 if image is None:
@@ -34,3 +34,9 @@ for i, (x, y, w, h) in enumerate(faces):
     cv2.imwrite(face_path, face)
     cv2.imshow(f"Face {i+1}", face)
 
+for (x, y, w, h) in faces:
+    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+cv2.imshow("Detected Faces", image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
